@@ -1,8 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
 
+require('dotenv').config();
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASS;
+const dbHost = process.env.DB_HOST;
 
 const { userModel, adminModel, courseModel, purchaseModel } = require("./db")
 
@@ -22,7 +25,7 @@ app.use("/api/v1/admin",adminRouter);
 app.listen(3000);
 
 async function main(){
-    await mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/TeachHub-Database`);
-    app.listen(3001);
+    await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@${dbHost}/TeachHub-Database`);
+    app.listen(3000);
 }
 main();
