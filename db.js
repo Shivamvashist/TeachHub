@@ -3,7 +3,7 @@ const { Schema }= require("mongoose");
 
 const ObjectId = mongoose.Types.ObjectId; 
 
-mongoose.connect("mongodb+srv://NinjaVashist:XhRKPWa2Lm8GcfiL@cluster0.abyyl.mongodb.net/TeachHub-Database");
+// mongoose.connect("mongodb+srv://NinjaVashist:XhRKPWa2Lm8GcfiL@cluster0.abyyl.mongodb.net/TeachHub-Database");
 
 
 const userSchema = new Schema({
