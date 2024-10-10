@@ -1,0 +1,20 @@
+{
+  "name": "teachhub",
+  "version": "1.0.0",
+  "description": "A platform to for teachers to sell their courses!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shivamvashist/TeachHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shivamvashist/TeachHub/issues"
+  },
+  "homepage": "https://github.com/Shivamvashist/TeachHub#readme"
+}
