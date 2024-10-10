@@ -4,6 +4,8 @@
   "description": "A platform to for teachers to sell their courses!",
   "main": "index.js",
   "scripts": {
+    "start":"node index.js",
+    "dev":"nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/Shivamvashist/TeachHub#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
