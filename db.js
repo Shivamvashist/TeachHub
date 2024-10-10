@@ -10,7 +10,7 @@ const userSchema = new Schema({
     firstname:String,
     lastname:String,
     email:{type:String, unique: true},
-    username:String,
+    username:{type:String, unique: true},
     password:String,
     address:String
 })
@@ -20,7 +20,7 @@ const adminSchema = new Schema({
     firstname:String,
     lastname:String,
     email:{type:String, unique: true},
-    username:String,
+    username:{type:String, unique: true},
     password:String,
     address:String
 })
