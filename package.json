@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Shivamvashist/TeachHub/issues"
   },
-  "homepage": "https://github.com/Shivamvashist/TeachHub#readme"
+  "homepage": "https://github.com/Shivamvashist/TeachHub#readme",
+  "dependencies": {
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.7.1"
+  }
 }
