@@ -1,20 +1,20 @@
 const {Router} = require("express");
 
-const userRoute = Router();
+const userRouter = Router();
 
-userRoute.post("/signup",function(req,res){
+userRouter.post("/signup",function(req,res){
     res.json({
         msg:"endpoint"
       }) 
 })
 
-userRoute.post("/signin",function(req,res){
+userRouter.post("/signin",function(req,res){
     res.json({
         msg:"endpoint"
       }) 
 })
 
-userRoute.get("/purchases",function(req,res){
+userRouter.get("/purchases",function(req,res){
     res.json({
         msg:"endpoint"
       }) 
@@ -22,5 +22,5 @@ userRoute.get("/purchases",function(req,res){
 
 
 module.exports = {
-    userRoute : userRoute
+    userRouter : userRouter
 }
