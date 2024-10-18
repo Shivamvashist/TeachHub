@@ -1,3 +1,5 @@
+//made a schema , made a model out of it , exported the model
+
 const mongoose = require("mongoose");
 const { Schema }= require("mongoose");
 
