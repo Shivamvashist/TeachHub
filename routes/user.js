@@ -72,10 +72,10 @@ userRouter.post("/signin",async function(req,res){
     })
     const validationResult1 = requiredBody.safeParse(req.body)
 
-    if(!validationResult1){
+    if(!validationResult1.success){
         res.json({
             msg:"incorrect format",
-            error:validationResult1.error
+            error:validationResult1.error.issues[0].message
         })
         return
     }
