@@ -1,9 +1,12 @@
 const { Router } = require("express");
 const { adminModel } = require("../db")
 const jwt = require("jsonwebtoken");
-const JWT_SECRET_ADMIN = `${process.env.JWT_ADMIN}`;
+// const JWT_SECRET_ADMIN = `${process.env.JWT_ADMIN}`;
+const { JWT_SECRET_ADMIN } = require("../config")
 const { z } = require("zod"); 
 const bcrypt = require("bcrypt");
+const { adminMiddleware } = require("../middleware/admin");
+
 
 const adminRouter = Router();
 

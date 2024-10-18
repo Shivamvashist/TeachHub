@@ -3,7 +3,9 @@ const { userModel } = require("../db");
 const { z } = require("zod"); 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const JWT_SECRET_USER = `${process.env.JWT_USER}`;
+// const JWT_SECRET_USER = `${process.env.JWT_USER}`;
+const { JWT_SECRET_USER } = require("../config");
+const { userMiddleware } = require("../middleware/user");
 
 const userRouter = Router();
 
