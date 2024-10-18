@@ -33,7 +33,7 @@ adminRouter.post("/signup",async function(req,res){
     try{
         const { firstname, lastname, email, username, password } = req.body;
 
-        const hashedPass = await bcrypt.hash(password,5);
+        const hashedPass = await bcrypt.hash(password,5);//plain pass and salt rounds
     
         await adminModel.create({
             firstname,
@@ -65,10 +65,10 @@ adminRouter.post("/signin",async function(req,res){
     })
     const validationResult1 = requiredBody.safeParse(req.body)
 
-    if(!validationResult1){
+    if(!validationResult1.success){
         res.json({
             msg:"incorrect format",
-            error:validationResult1.error
+            error:validationResult1.error.issues[0].message
         })
         return
     }
@@ -85,7 +85,7 @@ adminRouter.post("/signin",async function(req,res){
             return res.status(400).json({ error: "User not found" });
           }
 
-        const validPass = await bcrypt.compare(password, user.password);
+        const validPass = await bcrypt.compare(password, user.password); // checking hashed pass.. compare input pass to hashed pass from db
         if(!validPass){
             return res.status(401).json({ error: "Invalid password" });
         }
@@ -116,6 +116,23 @@ adminRouter.post("/signin",async function(req,res){
 adminRouter.post("/courses",adminMiddleware,async function(req,res){
     const adminId = req.userId;
 
+    const validCourse = z.object({
+        title: z.string(),
+        description: z.string().min(20),
+        price: z.number()
+    })
+
+    const courseValidationResult = validCourse.safeParse(req.body);
+
+    if(!courseValidationResult.success){
+        res.json({
+            msg:"invalid course",
+            error:courseValidationResult.error
+        })
+        return
+    }
+    let errorchk = false;
+    try {
     const {title, description, imageUrl, price} = req.body;
 
     await courseModel.create({
@@ -126,10 +143,21 @@ adminRouter.post("/courses",adminMiddleware,async function(req,res){
         creatorId:adminId
     })
 
-    res.json({
-        msg:"Course created!",
-        courseId: course._id
-      }) 
+    
+    } catch (e) {
+        res.json({
+            msg:"course creation failed!"
+        })
+        errorchk = true
+    }
+
+    if(!errorchk){
+        res.json({
+            msg:"Course created!",
+            courseId: course._id
+          }) 
+    }
+    
 })
 
 adminRouter.put("/courses",function(req,res){
