@@ -119,6 +119,7 @@ adminRouter.post("/courses",adminMiddleware,async function(req,res){
     const validCourse = z.object({
         title: z.string(),
         description: z.string().min(20),
+        imageUrl: z.string(),
         price: z.number()
     })
 
@@ -131,11 +132,10 @@ adminRouter.post("/courses",adminMiddleware,async function(req,res){
         })
         return
     }
-    let errorchk = false;
     try {
     const {title, description, imageUrl, price} = req.body;
 
-    await courseModel.create({
+    const course = await courseModel.create({
         title:title,
         description:description,
         imageUrl:imageUrl,
@@ -143,20 +143,20 @@ adminRouter.post("/courses",adminMiddleware,async function(req,res){
         creatorId:adminId
     })
 
+    res.json({
+        msg:"Course created!",
+        courseId: course._id
+      }) 
+
     
     } catch (e) {
         res.json({
-            msg:"course creation failed!"
+            msg:"course creation failed!",
+            error:e.error
         })
-        errorchk = true
     }
 
-    if(!errorchk){
-        res.json({
-            msg:"Course created!",
-            courseId: course._id
-          }) 
-    }
+    
     
 })
 
@@ -172,8 +172,6 @@ adminRouter.get("/courses",function(req,res){
       }) 
 })
 
-
-
 module.exports = {
     adminRouter:adminRouter
-}
+}                                                                                                         
