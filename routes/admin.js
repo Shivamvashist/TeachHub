@@ -156,19 +156,57 @@ adminRouter.post("/courses",adminMiddleware,async function(req,res){
         })
     }
 
-    
-    
 })
 
-adminRouter.put("/courses",function(req,res){
+adminRouter.put("/courses",adminMiddleware,async function(req,res){
+
+    const adminId = req.userId;
+
+    const validCourse = z.object({
+        title: z.string(),
+        description: z.string().min(20),
+        imageUrl: z.string(),
+        price: z.number()
+    })
+
+    const courseValidationResult = validCourse.safeParse(req.body);
+
+    if(!courseValidationResult.success){
+        res.json({
+            msg:"invalid course",
+            error:courseValidationResult.error
+        })
+        return
+    }
+    try {
+    const {title, description, imageUrl, price, courseId} = req.body;
+
+    const course = await courseModel.updateOne({
+        _id: courseId
+    },{
+        title:title,
+        description:description,
+        imageUrl:imageUrl,
+        price:price
+    })
+
     res.json({
-        msg:"endpoint"
+        msg:"Course has been updated",
+        courseId: course._id
       }) 
+
+    
+    } catch (e) {
+        res.json({
+            msg:"course creation failed!",
+            error:e.error
+        })
+    }
 })
 
 adminRouter.get("/courses",function(req,res){
     res.json({
-        msg:"endpoint"
+        msg:"Read courses"
       }) 
 })
 
