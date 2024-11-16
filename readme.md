@@ -1,0 +1,1 @@
+A course selling platform made with MERN stack
