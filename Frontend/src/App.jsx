@@ -1,27 +1,34 @@
-import { useState } from 'react'
-
-
+import { useState,useEffect } from 'react'
+import { BrowserRouter,Routes,Route,Link, Outlet } from 'react-router-dom'
+import { Homepage } from './HomePage'
+import { Layout } from './Layout'
+import { Course } from './Routes/common/Courses'
 
 function App() {
   
-  return <div>
+  useEffect(()=>{
+    document.body.classList.add('bg-[#111827]','text-white')
+  },[])
 
-    <div className='w-[100vw] h-32 bg-[#f6d992] flex justify-center text-xl' >
-      TeachHub
-      <Header />
-    </div>
-    
-  </div>
-}
-
-function Header(){
-  
   return <div>
-    <p className='font-roboto '>
-      <span className='font-satisfy text-3xl'>T</span>each<span className='font-satisfy text-3xl'>H</span>ub
-    </p>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Homepage/>}/>
+          <Route path='/courses' element={<Course/>}/>
+          <Route path='/purchases' element={<Homepage/>}/>
+          <Route path='/aboutus' element={<Homepage/>}/>
+
+          <Route path='/user/signup' element={<Homepage/>}/>
+          <Route path='/user/login' element={<Homepage/>}/>
+          <Route path='/admin/signup' element={<Homepage/>}/>
+          <Route path='/admin/login' element={<Homepage/>}/>
+          <Route path='/admin/createCourse' element={<Homepage/>}/>
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </div>
- 
 }
 
 

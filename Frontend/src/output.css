@@ -558,21 +558,17 @@ video {
   display: flex;
 }
 
-.h-32 {
-  height: 8rem;
+.h-24 {
+  height: 6rem;
 }
 
-.w-\[100vw\] {
-  width: 100vw;
+.gap-4 {
+  gap: 1rem;
 }
 
-.justify-center {
-  justify-content: center;
-}
-
-.bg-\[\#f6d992\] {
+.bg-\[\#111827\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(246 217 146 / var(--tw-bg-opacity, 1));
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
 }
 
 .font-roboto {
@@ -583,12 +579,22 @@ video {
   font-family: Satisfy, cursive;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.text-red-50 {
+  --tw-text-opacity: 1;
+  color: rgb(254 242 242 / var(--tw-text-opacity, 1));
+}
+
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
