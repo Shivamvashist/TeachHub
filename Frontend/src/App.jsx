@@ -1,8 +1,13 @@
 import { useState,useEffect } from 'react'
-import { BrowserRouter,Routes,Route,Link, Outlet } from 'react-router-dom'
-import { Homepage } from './HomePage'
-import { Layout } from './Layout'
+import { BrowserRouter,Routes,Route,Link,Outlet } from 'react-router-dom'
+import { Homepage } from './Routes/common/HomePage'
+import { Layout } from './Routes/common/Layout'
 import { Course } from './Routes/common/Courses'
+import { About } from './Routes/common/About'
+import { Purchase } from './Routes/common/Purchases'
+import { Admin } from './Routes/admin/Admin'
+import { UserSignup } from './Routes/user/Signup'
+import { UserLogin } from './Routes/user/Login'
 
 function App() {
   
@@ -16,11 +21,12 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Homepage/>}/>
           <Route path='/courses' element={<Course/>}/>
-          <Route path='/purchases' element={<Homepage/>}/>
-          <Route path='/aboutus' element={<Homepage/>}/>
+          <Route path='/purchases' element={<Purchase/>}/>
+          <Route path='/aboutus' element={<About/>}/>
 
-          <Route path='/user/signup' element={<Homepage/>}/>
-          <Route path='/user/login' element={<Homepage/>}/>
+          <Route path='/user/signup' element={<UserSignup/>}/>
+          <Route path='/user/login' element={<UserLogin/>}/>
+          <Route path='/admin' element={<Admin/>}/>
           <Route path='/admin/signup' element={<Homepage/>}/>
           <Route path='/admin/login' element={<Homepage/>}/>
           <Route path='/admin/createCourse' element={<Homepage/>}/>
