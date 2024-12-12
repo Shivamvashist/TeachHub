@@ -7,7 +7,8 @@ export default {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
         satisfy: ["Satisfy", "cursive"],
-        marker: ["Permanent Marker", 'cursive']
+        marker: ["Permanent Marker", 'cursive'],
+        atomic: ["Atomic Age", "serif"]
       }
     },
   },
