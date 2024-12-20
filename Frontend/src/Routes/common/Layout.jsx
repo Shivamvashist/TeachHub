@@ -37,9 +37,10 @@ function Header(){
 }
 
 
-const Footer = () => {
+
+function Footer(){
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10">
+    <footer className="bg-gray-900 text-gray-300 py-10 border-t border-gray-700">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">TeachHub</h2>
