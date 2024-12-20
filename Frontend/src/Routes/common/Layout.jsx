@@ -7,6 +7,7 @@ export function Layout() {
     return <div className='flex flex-col items-center '>
       <Header />
       <Outlet />
+      <Footer />
     </div>
 
 }
@@ -34,3 +35,102 @@ function Header(){
       </div>
     
 }
+
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-4">TeachHub</h2>
+          <p className="text-sm">
+            Empowering educators and learners worldwide. Join our platform to
+            share knowledge and learn new skills.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link to="/aboutus" className="hover:underline">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link  className="hover:underline">
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link to="/courses" className="hover:underline">
+                Browse Courses
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/signup" className="hover:underline">
+                Become a Teacher
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link className="hover:underline">
+                FAQs
+              </Link>
+            </li>
+            <li>
+              <Link  className="hover:underline">
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link  className="hover:underline">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link className="hover:underline">
+                Terms of Service
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Stay Updated</h3>
+          <p className="text-sm mb-4">
+            Subscribe to get the latest courses and deals right in your inbox.
+          </p>
+          <form>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 rounded bg-gray-800 text-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            />
+            <button
+              type="submit"
+              className="mt-2 w-full py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Footer Bottom */}
+      <div className="border-t border-gray-700 mt-10 pt-5 text-center text-sm text-gray-500">
+        <p>&copy; {new Date().getFullYear()} TeachHub. All rights reserved.</p>
+        <p>Made with ❤️ by Shivam.</p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+

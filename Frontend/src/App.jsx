@@ -19,6 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Layout />}>
+        
           <Route index element={<Homepage/>}/>
           <Route path='/courses' element={<Course/>}/>
           <Route path='/purchases' element={<Purchase/>}/>
@@ -26,6 +27,7 @@ function App() {
 
           <Route path='/user/signup' element={<UserSignup/>}/>
           <Route path='/user/login' element={<UserLogin/>}/>
+
           <Route path='/admin' element={<Admin/>}/>
           <Route path='/admin/signup' element={<Homepage/>}/>
           <Route path='/admin/login' element={<Homepage/>}/>
