@@ -66,7 +66,7 @@ function Element3(){
       <section className="container mx-auto px-6 py-12">
         <h2 className="text-3xl font-semibold text-white mb-6 text-center">Explore Categories</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {["Technology", "Business", "Design"].map((category) => (
+          {["Technology", "Business", "Design","chetan"].map((category) => (
             <div
               key={category}
               className="bg-gray-800 p-6 rounded-lg shadow-lg text-center hover:shadow-xl"
@@ -95,6 +95,8 @@ function Element3(){
               </div>
             ))}
           </div>
+
+          
         </div>
       </section>
 

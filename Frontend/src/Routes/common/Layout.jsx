@@ -27,8 +27,23 @@ function Header(){
           </div>
           <div className='h-24 flex justify-end items-center mx-4'>
             <div className=' text-white flex gap-4 justify-end items-baseline mx-4 mt-3'>
-              <Link to={'/user/signup'}>SignUp</Link>
-              <Link to={'/user/login'}>Login</Link>
+              
+              
+
+              
+              <Link to={'/user/signup'}>
+                <button className="px-6 py-3 bg-sky-500 text-white rounded-lg hover:bg-sky-600">
+                  SignUp
+                </button>
+              </Link>
+              
+              
+            <Link to={'/user/login'}>
+              <button className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
+                Login
+              </button>
+            </Link>
+              
             </div>
           </div>
         </div>    
@@ -76,7 +91,6 @@ function Footer(){
           </ul>
         </div>
 
-        {/* Resources */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
           <ul className="space-y-2">
