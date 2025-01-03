@@ -18,8 +18,6 @@ userRouter.post("/signup",async function(req,res){
     // const password = req.body.password;    
 
     const requiredBody = z.object({
-        firstname:z.string(),
-        lastname:z.string(),
         email:z.string().email(),
         username:z.string(),
         password:z.string().min(8)
@@ -41,8 +39,8 @@ userRouter.post("/signup",async function(req,res){
         const hashedPass = await bcrypt.hash(password,6);
     
         await userModel.create({
-            firstname,
-            lastname,
+            // firstname,
+            // lastname,
             email,
             username,
             password:hashedPass
