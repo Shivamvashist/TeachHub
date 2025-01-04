@@ -1,6 +1,4 @@
-import Blob1 from "../../assets/blobs homepage/blob1.svg"
 import Blob2 from "../../assets/blobs homepage/blob2.svg"
-import Blob3 from "../../assets/blobs homepage/blob3.svg"
 import { Link } from "react-router-dom"
 
 export function UserLogin(){
@@ -14,7 +12,7 @@ function Login() {
     return <div>
         <div className="relative h-[80vh] flex items-center justify-center">
             <img className="absolute scale-125 -z-10 blur-md" src={Blob2}/>
-            <div className="w-full bg-slate-600 bg-opacity-10 max-w-md p-8 rounded-lg backdrop-blur-3xl ">
+            <div className="w-full  max-w-md p-8 rounded-lg backdrop-blur-3xl ">
 
                 <p className="font-roboto text-center text-3xl mb-8 "> Welcome to <span className=' font-bold text-sky-300 '>TeachHub</span> </p>
 
@@ -23,7 +21,7 @@ function Login() {
                     <div>
                         <label className="block font-medium text-gray-400">
                             Username
-                            <input className="w-full rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            <input className="w-full rounded py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-blue-500" 
                             type="text" 
                             required placeholder="Enter your username"
                             
@@ -35,7 +33,7 @@ function Login() {
                     <div>
                         <label className="block font-medium text-gray-400 ">
                             Password
-                            <input className="w-full rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 " 
+                            <input className="w-full rounded py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-blue-500 " 
                             type="password" 
                             required placeholder="Enter your password"/>
                         </label>
