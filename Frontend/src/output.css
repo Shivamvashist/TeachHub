@@ -600,6 +600,18 @@ video {
   position: relative;
 }
 
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.top-8 {
+  top: 2rem;
+}
+
 .top-\[-400px\] {
   top: -400px;
 }
@@ -690,6 +702,10 @@ video {
 
 .h-24 {
   height: 6rem;
+}
+
+.h-\[24px\] {
+  height: 24px;
 }
 
 .h-\[80vh\] {
@@ -891,6 +907,11 @@ video {
   --tw-bg-opacity: 0.1;
 }
 
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
@@ -1032,6 +1053,10 @@ video {
 
 .opacity-30 {
   opacity: 0.3;
+}
+
+.opacity-60 {
+  opacity: 0.6;
 }
 
 .opacity-90 {
