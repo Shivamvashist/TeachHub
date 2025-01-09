@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 
 require('dotenv').config();
 const dbUser = process.env.DB_USER;
@@ -12,6 +13,7 @@ const { userModel, adminModel, courseModel, purchaseModel } = require("./db")
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 
 //Routes
