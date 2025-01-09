@@ -1,4 +1,4 @@
-import { useState,useRef,useEffect } from 'react'
+import { useState,useRef } from 'react'
 
 import eye1 from '../../assets/pass/passShow.png'
 import eye2 from '../../assets/pass/passHide.png'
@@ -19,13 +19,13 @@ function Signup() {
     const [showPass,setShowPass] = useState('true');
 
 
-    const [data,setData] = useState("")
     const usernameRef = useRef();
     const emailRef = useRef();
     const passRef = useRef();
 
   function passHandler() {
     setShowPass(v=>!v)
+
 }
 
  async function HandleSubmit(e) {
@@ -41,19 +41,14 @@ function Signup() {
     const password = passRef.current.value
 
    
-    await axios.post("http://localhost:3000/api/v1/user/signup",{
+    const data1 = await axios.post("http://localhost:3000/api/v1/user/signup",{
         email:email,
         username:username,
         password:password
-    }).then((resolve)=>{
-        setData(data=>data = resolve)
-        console.log("inside ddata="+data)
-    }).catch((e)=>{
-        console.log(e)
     })
- 
 
-console.log("data=" + data)
+    alert(data1.data.msg)
+
 
   }
 

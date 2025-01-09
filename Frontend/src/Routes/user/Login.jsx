@@ -4,6 +4,7 @@ import Blob2 from "../../assets/blobs homepage/blob2.svg"
 
 import { Link } from "react-router-dom"
 import {useState,useRef} from 'react'
+import axios from 'axios'
 
 
 export function UserLogin(){
@@ -21,6 +22,21 @@ function Login() {
     const usernameRef = useRef();
     const passRef = useRef();
   
+    async function handleSubmit(e){
+        e.preventDefault()
+
+        const username = usernameRef.current.value;
+        const password = passRef.current.value ;
+        
+        const submitData = await axios.post("http://localhost:3000/api/v1/user/signin",{
+            username:username,
+            password:password
+        })
+
+        alert(submitData.data.msg)
+
+    }
+
     function passHandler() {
       setShowPass(v=>!v)
   }
@@ -32,7 +48,7 @@ function Login() {
 
                 <p className="font-roboto text-center text-3xl mb-8 "> Welcome to <span className=' font-bold text-sky-300 '>TeachHub</span> </p>
 
-                <form className="flex flex-col gap-4 ">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
 
                     <div>
                         <label className="block font-medium text-gray-400">
@@ -56,12 +72,12 @@ function Login() {
                             placeholder="Enter your password">
                             </input>
 
-                            <button onClick={passHandler} className='z-10 absolute top-8 right-2  bottom-6'><img className='h-[24px] object-contain ' src={( showPass ? eye2 : eye1)} /></button>
+                            <button type='button' onClick={passHandler} className='z-10 absolute top-8 right-2  bottom-6'><img className='h-[24px] object-contain ' src={( showPass ? eye2 : eye1)} /></button>
                         </label>
                     </div>
 
                     <div>
-                        <button className="bg-blue-500 py-2 w-full rounded-md  text-white mt-4 hover:bg-blue-600 transition duration-300">
+                        <button type='submit' className="bg-blue-500 py-2 w-full rounded-md  text-white mt-4 hover:bg-blue-600 transition duration-300">
                             Submit
                         </button>
                     </div>
