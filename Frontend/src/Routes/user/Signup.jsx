@@ -67,30 +67,30 @@ function Signup() {
                     <div>
                         <label className="block font-medium text-gray-400">
                             Username 
-                            <input className="w-full rounded py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            <input className="w-full rounded py-2 px-4 bg-[#11182071] text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" 
                             ref={usernameRef}
                             type="text" required 
-                            placeholder="Enter your username"/>
+                            placeholder="username"/>
                         </label>
                     </div>
                     
                     <div>
                         <label className="block font-medium text-gray-400">
                             Email
-                            <input className="w-full rounded py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            <input className="w-full rounded py-2 px-4 bg-[#11182071] text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" 
                             ref={emailRef}
                             type="email" required 
-                            placeholder="Enter your email"/>
+                            placeholder="name@email.com"/>
                         </label>
                     </div>
 
                     <div>
                         <label className="relative block font-medium text-gray-400 ">
                             Password
-                            <input className="w-full rounded py-2 px-4 text-black focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                            <input className="w-full rounded py-2 px-4 bg-[#11182071] text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500" 
                             ref={passRef}
                             type={(showPass ? "password" : "text" )} required 
-                            placeholder="Enter your password">
+                            placeholder="••••••••">
                             </input>
 
                             <button type='button' onClick={passHandler} className='z-10 absolute top-8 right-2  bottom-6'><img className='h-[24px] object-contain ' src={( showPass ? eye2 : eye1)} /></button>
