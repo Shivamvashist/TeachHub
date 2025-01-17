@@ -8,6 +8,7 @@ import { Purchase } from './Routes/common/Purchases'
 import { Admin } from './Routes/admin/Admin'
 import { UserSignup } from './Routes/user/Signup'
 import { UserLogin } from './Routes/user/Login'
+import { UserDashBoard } from './Routes/user/UserDashBoard'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
   return <div>
     <BrowserRouter>
       <Routes>
+
         <Route path='/' element={<Layout />}>
         
           <Route index element={<Homepage/>}/>
@@ -34,7 +36,13 @@ function App() {
           <Route path='/admin/createCourse' element={<Homepage/>}/>
 
         </Route>
+        
+        <Route path='/user/dashboard' element={<UserDashBoard />}>
+
+        </Route>
+
       </Routes>
+
     </BrowserRouter>
   </div>
 }
