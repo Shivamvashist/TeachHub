@@ -1,4 +1,5 @@
 import { useState,useRef } from 'react'
+import {toast} from 'react-hot-toast'
 
 import eye1 from '../../assets/pass/passShow.png'
 import eye2 from '../../assets/pass/passHide.png'
@@ -18,19 +19,15 @@ function Signup() {
 
     const [showPass,setShowPass] = useState('true');
 
-
     const usernameRef = useRef();
     const emailRef = useRef();
     const passRef = useRef();
 
   function passHandler() {
     setShowPass(v=>!v)
-
 }
 
- async function HandleSubmit(e) {
-
-
+async function HandleSubmit(e) {
 
     e.preventDefault()
 
@@ -40,21 +37,34 @@ function Signup() {
     const username = usernameRef.current.value
     const password = passRef.current.value
 
-   
-    const data1 = await axios.post("http://localhost:3000/api/v1/user/signup",{
-        email:email,
-        username:username,
-        password:password
-    })
+    try{
+        const data1 = await axios.post("http://localhost:3000/api/v1/user/signup",{
+            email:email,
+            username:username,
+            password:password
+        })
+        toast.success(data1.data.msg, {
+            position: "bottom-right"
+          })
+        
+    } catch (e){
+        if(e.status === 409 ){
+            toast.error("User already exists!", {position: "bottom-right"})
+        } 
+        if(e.status === 400){
 
-    alert(data1.data.msg)
-
-
+            toast.error(e.response.data.error.issues[0].message, {
+                position: "bottom-right"
+            })
+            console.log(e.response.data.error.issues[0].message)
+        }
+    }
+    
   }
 
 
   return <div>
-    <div className="relative h-[80vh] flex items-center justify-center">
+    <div className="relative h-[100vh] flex items-center justify-center">
             <img className="absolute scale-150 -z-10 blur-md opacity-60" src={Blob2}/>
 
             <img className="absolute translate-y-20 -translate-x-10 scale-150 opacity-60 -z-10 blur-md" src={Blob2}/>

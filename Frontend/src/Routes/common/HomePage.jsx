@@ -1,6 +1,7 @@
 import Blob1 from "../../assets/blobs homepage/blob1.svg"
 import Blob2 from "../../assets/blobs homepage/blob2.svg"
 import Blob3 from "../../assets/blobs homepage/blob3.svg"
+// import {toast} from 'react-hot-toast'
 
 export function Homepage() {
     return <div className=" divide-cyan-950">
@@ -21,25 +22,6 @@ function Element1() {
         </div>
     </div>    
 }
-
-// function Element2() {
-//     return <div>
-//         <div className=" h-[80vh] w-[100vw] font-atomic ">
-//             Explore our top performing courses
-//         </div>
-        
-//     </div>
-// }
-
-// function Element3() {
-//     return <div>
-//         <div className=" h-[80vh] w-[100vw]">
-            
-//         </div>
-        
-//     </div>
-// }
-
 
 
 function Element3(){

@@ -9,6 +9,7 @@ import { Admin } from './Routes/admin/Admin'
 import { UserSignup } from './Routes/user/Signup'
 import { UserLogin } from './Routes/user/Login'
 import { UserDashBoard } from './Routes/user/UserDashBoard'
+import {Toaster} from 'react-hot-toast'
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
   },[])
 
   return <div>
+    <Toaster/>
     <BrowserRouter>
       <Routes>
 

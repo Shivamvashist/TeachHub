@@ -1,6 +1,10 @@
+import { useState,useEffect } from "react"
 
 import {Outlet,Link} from 'react-router-dom'
 import menuSVG from '../../assets/menu.svg'
+import UserPng  from '../../assets/user.png'
+import ShopPng from '../../assets/cart.png'
+import LogoutPng from '../../assets/logout.png'
 
 export function Layout() {
 
@@ -14,41 +18,73 @@ export function Layout() {
 
 
 function Header(){
+
+  const [isLoggedIn,setIsLoggedIn] = useState(false); 
   
     return <div className='fixed h-24  text-white flex gap-96 justify-center items-center z-30 '>
         <div className='h-24 xl:w-[1200px] lg:w-[1000px]  text-white flex justify-between items-center shadow-sm shadow-gray-700 backdrop-blur-sm rounded-3xl' >
           <div className='h-24 text-white flex gap-4 justify-start items-center   mx-7'>
             <div className='flex gap-4 justify-start items-baseline'>
               <Link to={'/'} ><p className='font-roboto text-3xl font-bold text-sky-300 hover:text-sky-200 mr-3'>TeachHub</p></Link>
-              <Link to={'/courses'}>Courses</Link>
+              {/* <Link to={'/courses'}>Courses</Link>
               <Link to={'/purchases'}>Purchases</Link>
-              <Link to={'/aboutus'}>About us</Link>
+              <Link to={'/aboutus'}>About us</Link> */}
             </div>
           </div>
           <div className='h-24 flex justify-end items-center mx-4'>
-            <div className=' text-white flex gap-4 justify-end items-baseline mx-4 mt-3'>
-              
-              
+            
+            {isLoggedIn ? <AccountForHeader/> : <LoginForHeader/>}
 
-              
-              <Link to={'/user/signup'}>
-                <button className="px-6 py-3 bg-sky-500 text-white rounded-lg hover:bg-sky-600">
-                  SignUp
-                </button>
-              </Link>
-              
-              
-            <Link to={'/user/login'}>
-              <button className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
-                Login
-              </button>
-            </Link>
-              
-            </div>
           </div>
         </div>    
       </div>
     
+}
+
+function LoginForHeader() {
+
+  return <div className=' text-white flex gap-4 justify-end items-baseline mx-4 mt-3'>
+              
+              
+
+              
+  <Link to={'/user/signup'}>
+    <button className="px-6 py-3 bg-sky-500 text-white rounded-lg hover:bg-sky-600">
+      SignUp
+    </button>
+  </Link>
+  
+  
+<Link to={'/user/login'}>
+  <button className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
+    Login
+  </button>
+</Link>
+  
+</div>
+
+}
+
+function AccountForHeader() {
+
+  const [userClick,setUserClick] = useState(false);
+
+    function UserClickHandler(){
+        setUserClick(v=>!v);
+        toast.success('Successfully toasted!')
+    }
+  
+  return <div className="relative flex gap-8 ">
+    <Link to={'/courses'}><img className="w-12 hover:scale-110 transition-all ease-out " src={ShopPng} /></Link>
+    <img className="w-12 hover:scale-110 transition-all ease-out" src={UserPng}  onClick={UserClickHandler}/>
+    <div className={`absolute flex justify-center items-center -right-2 top-14 h-8 rounded-lg transition-opacity ease-in-out ${userClick? '' : 'opacity-0 pointer-events-none'}`} >
+        <button className=" w-full rounded-lg flex justify-center items-center gap-2 px-4 py-1 backdrop-blur-sm border border-gray-700">
+            <img className="w-5 h-5 invert"src={LogoutPng}/>
+            log out
+        </button>
+    </div>
+  </div>
+
 }
 
 
@@ -147,5 +183,5 @@ function Footer(){
   );
 };
 
-export default Footer;
+
 

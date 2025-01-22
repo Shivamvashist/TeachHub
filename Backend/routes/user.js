@@ -22,10 +22,11 @@ userRouter.post("/signup",async function(req,res){
         username:z.string(),
         password:z.string().min(8)
     })
+    
     const validationResult = requiredBody.safeParse(req.body);
 
     if(!validationResult.success){
-        res.json({
+        res.status(400).json({
             msg:"invalid data",
             error:validationResult.error
         })
@@ -47,7 +48,7 @@ userRouter.post("/signup",async function(req,res){
         })
     
     }catch(e){
-        res.json({
+        res.status(409).json({
             msg:"user already exists!"
             
         })
@@ -56,7 +57,7 @@ userRouter.post("/signup",async function(req,res){
     
     if(!errorThrown){
         res.json({
-            msg:"SignedUp!"
+            msg:"Successfully Signed Up!"
           })
     }
      
