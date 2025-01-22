@@ -72,11 +72,10 @@ userRouter.post("/signin",async function(req,res){
     const validationResult1 = requiredBody.safeParse(req.body)
 
     if(!validationResult1.success){
-        res.json({
+        return res.status(409).json({
             msg:"incorrect format",
             error:validationResult1.error.issues[0].message
         })
-        return
     }
     let errorchk = false;
     try{
@@ -101,21 +100,25 @@ userRouter.post("/signin",async function(req,res){
                 username:username
             },JWT_SECRET_USER);
 
-            res.json({
-                msg:"Logged in",
-                token: token
-            })
-        }else{
-            res.status(403).json({
+            return res
+            .cookie("token", token, { httpOnly: true })
+            .json({
+                msg: "Successfully Logged in",
+                token: token,
+            });
+
+        } else {
+            return res.status(403).json({
                 msg:"incorrect Credentials!"
             })
         }
 
     }catch(e){
-        res.json({
+        errorchk = true;
+
+        return res.json({
             msg:"some try catch error!"
         })
-        errorchk = true;
     }
     // if(!errorchk){
     //     res.json({

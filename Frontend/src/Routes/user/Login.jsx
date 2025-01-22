@@ -15,42 +15,6 @@ export function UserLogin(){
     </div>
 }
 
-// function Toaster(){
-
-
-
-//     return <div className={`{t.visible ? 'animate-enter' : 'animate-leave'} max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}>
-//     <div className="flex-1 w-0 p-4">
-//       <div className="flex items-start">
-//         <div className="flex-shrink-0 pt-0.5">
-//           <img
-//             className="h-10 w-10 rounded-full"
-//             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixqx=6GHAjsWpt9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-//             alt=""
-//           />
-//         </div>
-//         <div className="ml-3 flex-1">
-//           <p className="text-sm font-medium text-gray-900">
-//             Emilia Gates
-//           </p>
-//           <p className="mt-1 text-sm text-gray-500">
-//             Sure! 8:30pm works great!
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//     <div className="flex border-l border-gray-200">
-//       <button
-//         onClick={() => toast.dismiss(t.id)}
-//         className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-//       >
-//         Close
-//       </button>
-//     </div>
-//   </div>
-
- 
-// }
 
 function Login() {
 
@@ -66,13 +30,29 @@ function Login() {
         const username = usernameRef.current.value;
         const password = passRef.current.value ;
         
-        const submitData = await axios.post("http://localhost:3000/api/v1/user/signin",{
-            username:username,
-            password:password
-        })
-
-        toast(submitData.data.msg)
-        toast("hi")
+        try{
+            const submitData = await axios.post("http://localhost:3000/api/v1/user/signin",{
+                username:username,
+                password:password
+            })
+            toast.success(submitData.data.msg,{position:"bottom-right"})
+        } catch (e){
+            if(e.status === 400){
+                toast.error("User not found!",{position:"bottom-right"})
+            }
+            if(e.status === 401){
+                toast.error("Invalid Password!",{position:"bottom-right"})
+            }
+            if(e.status === 409){
+                toast.error(e.response.data.error,{position:"bottom-right"})
+                // console.log(e.response.data.error)
+            }
+            if(e.status === 403){
+                toast.error("incorrect Credentials!",{position:"bottom-right"})
+            }
+            // toast.error("error",{position:"bottom-right"})
+        }
+        
 
     }
 
@@ -81,7 +61,7 @@ function Login() {
   }
 
     return <div>
-        <div className="relative h-[80vh] flex items-center justify-center">
+        <div className="relative h-[100vh] flex items-center justify-center">
             <img className="absolute scale-125 -z-10 blur-md" src={Blob2}/>
             <div className="w-full  max-w-md p-8 rounded-lg backdrop-blur-3xl ">
 
