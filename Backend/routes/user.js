@@ -98,15 +98,20 @@ userRouter.post("/signin",async function(req,res){
             const token = jwt.sign({
                 id:user._id,
                 username:username
-            },JWT_SECRET_USER);
+            },JWT_SECRET_USER,{expiresIn:"1h"});
 
             return res
-            .cookie("token", token, { httpOnly: true })
+            .cookie("token", token,{
+                httpOnly: true,
+                maxAge: 3600000, 
+            })
             .json({
                 msg: "Successfully Logged in",
                 token: token,
-            });
-
+                redirectUrl: "http://localhost:5173/user/dashboard",
+            })
+            // .redirect("http://localhost:5173/user/dashboard");
+            
         } else {
             return res.status(403).json({
                 msg:"incorrect Credentials!"

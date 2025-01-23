@@ -1,10 +1,10 @@
 import eye1 from '../../assets/pass/passShow.png'
 import eye2 from '../../assets/pass/passHide.png'
 import Blob2 from "../../assets/blobs homepage/blob2.svg"
-import toast from 'react-hot-toast' 
 
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {useState,useRef} from 'react'
+import toast from 'react-hot-toast' 
 import axios from 'axios'
 
 
@@ -34,8 +34,10 @@ function Login() {
             const submitData = await axios.post("http://localhost:3000/api/v1/user/signin",{
                 username:username,
                 password:password
-            })
-            toast.success(submitData.data.msg,{position:"bottom-right"})
+            },{withCredentials: true}
+        );
+            // toast.success(submitData.data.msg,{position:"bottom-right"})
+            toast.success("Successfully Logged in!",{position:"bottom-right"})
         } catch (e){
             if(e.status === 400){
                 toast.error("User not found!",{position:"bottom-right"})
