@@ -1,10 +1,14 @@
 import { useState,useEffect } from "react"
 
-import {Outlet,Link} from 'react-router-dom'
+import {Outlet,Link,useNavigate} from 'react-router-dom'
 import menuSVG from '../../assets/menu.svg'
 import UserPng  from '../../assets/user.png'
 import ShopPng from '../../assets/cart.png'
 import LogoutPng from '../../assets/logout.png'
+import DashPng from '../../assets/dashboard.png'
+import Cookies from "js-cookie";
+
+import toast from 'react-hot-toast'; 
 
 export function Layout() {
 
@@ -19,7 +23,28 @@ export function Layout() {
 
 function Header(){
 
-  const [isLoggedIn,setIsLoggedIn] = useState(false); 
+  const [isLoggedIn , setIsLoggedIn] = useState(false);
+
+
+  useEffect(()=>{
+
+      try {
+          const token = Cookies.get("token");
+          if(token){
+              setIsLoggedIn(true);
+
+          } else if(!token){
+              console.log(("No token"));
+              
+          }
+  
+      } catch(e){
+          console.log("errorr given:" + e)
+      }
+
+  },[])
+
+
   
     return <div className='fixed h-24  text-white flex gap-96 justify-center items-center z-30 '>
         <div className='h-24 xl:w-[1200px] lg:w-[1000px]  text-white flex justify-between items-center shadow-sm shadow-gray-700 backdrop-blur-sm rounded-3xl' >
@@ -33,7 +58,7 @@ function Header(){
           </div>
           <div className='h-24 flex justify-end items-center mx-4'>
             
-            {isLoggedIn ? <AccountForHeader/> : <LoginForHeader/>}
+            {isLoggedIn ? <AccountForHeader setIsLoggedIn={setIsLoggedIn}/> : <LoginForHeader/>}
 
           </div>
         </div>    
@@ -65,23 +90,43 @@ function LoginForHeader() {
 
 }
 
-function AccountForHeader() {
+function AccountForHeader({setIsLoggedIn}) {
 
+  const navigate = useNavigate();
   const [userClick,setUserClick] = useState(false);
 
     function UserClickHandler(){
         setUserClick(v=>!v);
-        toast.success('Successfully toasted!')
     }
+    function logoutFn() {
+      Cookies.remove("token");
+      const logoutLoader = toast.loading('Logging out...',{position:"bottom-right"})
+      setTimeout(()=>{
+          navigate('/')
+          toast.dismiss(logoutLoader);
+          toast.success('Logged Out!',{position:"bottom-right"})
+          setIsLoggedIn(false);
+      },1000)
+      
+  }
   
   return <div className="relative flex gap-8 ">
     <Link to={'/courses'}><img className="w-12 hover:scale-110 transition-all ease-out " src={ShopPng} /></Link>
     <img className="w-12 hover:scale-110 transition-all ease-out" src={UserPng}  onClick={UserClickHandler}/>
-    <div className={`absolute flex justify-center items-center -right-2 top-14 h-8 rounded-lg transition-opacity ease-in-out ${userClick? '' : 'opacity-0 pointer-events-none'}`} >
-        <button className=" w-full rounded-lg flex justify-center items-center gap-2 px-4 py-1 backdrop-blur-sm border border-gray-700">
+    <div className={`absolute flex flex-col gap-2 justify-center items-center -right-2 top-16 h-20 rounded-lg transition-opacity ease-in-out border border-gray-700 ${userClick? '' : 'opacity-0 pointer-events-none'}`} >
+        
+        <button className=" w-full rounded-lg flex justify-center bg-inherit items-center gap-2 px-4 py-1 backdrop-blur-sm "
+        onClick={()=>{navigate('/user/dashboard')}} >
+            <img className="w-5 h-5 invert"src={DashPng}/>
+            DashBoard
+        </button>
+
+        <button className=" w-full rounded-lg flex justify-evenly items-center gap-2 px-4 py-1 backdrop-blur-sm  "
+        onClick={logoutFn} >
             <img className="w-5 h-5 invert"src={LogoutPng}/>
             log out
         </button>
+        
     </div>
   </div>
 
