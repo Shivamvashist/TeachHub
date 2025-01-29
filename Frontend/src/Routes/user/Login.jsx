@@ -23,6 +23,8 @@ function Login() {
 
     const usernameRef = useRef();
     const passRef = useRef();
+
+    const navigate = useNavigate();
   
     async function handleSubmit(e){
         e.preventDefault()
@@ -37,7 +39,15 @@ function Login() {
             },{withCredentials: true}
         );
             // toast.success(submitData.data.msg,{position:"bottom-right"})
-            toast.success("Successfully Logged in!",{position:"bottom-right"})
+            // toast.success("Successfully Logged in!",{position:"bottom-right"})
+            toast.loading("logging in...",{duration:"200",position:"bottom-right"})
+
+            setTimeout(() => {
+                toast.success("Successfully Logged in!", { position: "bottom-right" });
+                // toast.dismiss(loadingToast); // Dismiss the loading toast if we are not using duration
+                navigate('/user/dashboard'); 
+            }, 2000);
+            
         } catch (e){
             if(e.status === 400){
                 toast.error("User not found!",{position:"bottom-right"})
