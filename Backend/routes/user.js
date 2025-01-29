@@ -102,7 +102,6 @@ userRouter.post("/signin",async function(req,res){
 
             return res
             .cookie("token", token,{
-                httpOnly: true,
                 maxAge: 3600000, 
             })
             .json({
