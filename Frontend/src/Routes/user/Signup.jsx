@@ -4,7 +4,7 @@ import {toast} from 'react-hot-toast'
 import eye1 from '../../assets/pass/passShow.png'
 import eye2 from '../../assets/pass/passHide.png'
 import Blob2 from "../../assets/blobs homepage/blob2.svg"
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 export function UserSignup(){
@@ -22,6 +22,8 @@ function Signup() {
     const usernameRef = useRef();
     const emailRef = useRef();
     const passRef = useRef();
+
+    const navigate = useNavigate();
 
   function passHandler() {
     setShowPass(v=>!v)
@@ -46,6 +48,9 @@ async function HandleSubmit(e) {
         toast.success(data1.data.msg, {
             position: "bottom-right"
           })
+        setTimeout(()=>{
+            navigate('/user/login');
+        },1500)
         
     } catch (e){
         if(e.status === 409 ){
