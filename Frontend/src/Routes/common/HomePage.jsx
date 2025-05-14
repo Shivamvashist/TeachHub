@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import Blob1 from "../../assets/blobs homepage/blob1.svg"
 import Blob2 from "../../assets/blobs homepage/blob2.svg"
 import Blob3 from "../../assets/blobs homepage/blob3.svg"
@@ -16,8 +17,8 @@ function Element1() {
             <p className="z-30 opacity-90 glow">Learn • Grow • Achieve</p>
             <div>
                 <img className=" absolute top-[-400px] -rotate-90 opacity-30 blur-2xl -translate-y-32 -translate-x-96 z-10 transition-all duration-500 hover:blur-xl" src={Blob1}/>
-                <img className=" absolute top-[-400px] -rotate-450 opacity-30 blur-2xl translate-x-96 z-10 transition-all duration-500 hover:blur-xl" src={Blob2}/>
-                <img className=" absolute top-[-400px] -rotate-450 opacity-30 blur-2xl z-10 transition-all duration-500 hover:blur-xl " src={Blob3}/>
+                <img className=" absolute top-[-400px] -rotate-450 opacity-30 blur-2xl translate-x-96 z-10 transition-all duration-500  hover:blur-xl" src={Blob2}/>
+                <img className=" absolute top-[-400px] -rotate-450 opacity-30 blur-2xl z-10 transition-all duration-500 animate-pulse hover:blur-xl " src={Blob3}/>
             </div>
         </div>
     </div>    
@@ -36,12 +37,15 @@ function Element3(){
           Empowering educators. Enabling learners. Join the community that's transforming education.
         </p>
         <div className="flex justify-center space-x-4">
-          <button className="px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600">
+          <button className="px-6 py-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500">
             Explore Courses
           </button>
-          <button className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
-            Become a Teacher
-          </button>
+          <Link to='/admin'>
+            <button className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
+              Become a Teacher
+            </button>
+          </Link>
+        
         </div>
       </header>
 
@@ -87,7 +91,7 @@ function Element3(){
         <h2 className="text-3xl font-semibold text-white mb-6">
           Ready to Transform Education?
         </h2>
-        <button className="px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600">
+        <button className="px-6 py-3 bg-blue-400 text-white rounded-lg hover:bg-blue-500">
           Get Started Today
         </button>
       </section>

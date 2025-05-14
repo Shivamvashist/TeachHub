@@ -51,13 +51,10 @@ function DashBoard() {
             }
     
         } catch(e){
-            console.log("errorr given:" + e)
+            console.log("error given:" + e)
         }
 
-    },[])
-    
-
-    
+    },[])    
 
     // const decodedData = jwt_decode(token);
     // console.log(decodedData);
@@ -114,7 +111,7 @@ function Courses() {
     return <div>
         <div className="flex items-center">
             <div className="max-w-7xl w-full mx-auto">
-                <p>Hi</p>
+                <p></p>
 
             </div>
         </div>

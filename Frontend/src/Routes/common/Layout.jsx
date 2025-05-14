@@ -45,7 +45,6 @@ function Header(){
   },[])
 
 
-  
     return <div className='fixed h-24  text-white flex gap-96 justify-center items-center z-30 '>
         <div className='h-24 xl:w-[1200px] lg:w-[1000px]  text-white flex justify-between items-center shadow-sm shadow-gray-700 backdrop-blur-sm rounded-3xl' >
           <div className='h-24 text-white flex gap-4 justify-start items-center   mx-7'>
@@ -57,28 +56,25 @@ function Header(){
             </div>
           </div>
           <div className='h-24 flex justify-end items-center mx-4'>
-            
-            {isLoggedIn ? <AccountForHeader setIsLoggedIn={setIsLoggedIn}/> : <LoginForHeader/>}
 
+            {isLoggedIn ? <AccountForHeader setIsLoggedIn={setIsLoggedIn}/> : <LoginForHeader/>}
+            
           </div>
         </div>    
       </div>
-    
 }
 
 function LoginForHeader() {
 
   return <div className=' text-white flex gap-4 justify-end items-baseline mx-4 mt-3'>
-              
-              
 
-              
+
   <Link to={'/user/signup'}>
     <button className="px-6 py-3 bg-sky-500 text-white rounded-lg hover:bg-sky-600">
       SignUp
     </button>
   </Link>
-  
+
   
 <Link to={'/user/login'}>
   <button className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
@@ -136,7 +132,7 @@ function AccountForHeader({setIsLoggedIn}) {
 
 function Footer(){
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 border-t border-gray-700">
+    <footer className=" text-gray-300 py-10 border-t border-gray-700">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h2 className="text-2xl font-bold text-white mb-4">TeachHub</h2>
@@ -211,7 +207,7 @@ function Footer(){
             />
             <button
               type="submit"
-              className="mt-2 w-full py-2 bg-teal-500 text-white rounded hover:bg-teal-600"
+              className="mt-2 w-full py-2 bg-blue-400 text-white rounded hover:bg-blue-500"
             >
               Subscribe
             </button>
@@ -219,7 +215,6 @@ function Footer(){
         </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="border-t border-gray-700 mt-10 pt-5 text-center text-sm text-gray-500">
         <p>&copy; {new Date().getFullYear()} TeachHub. All rights reserved.</p>
         <p>Made with ❤️ by Shivam.</p>
