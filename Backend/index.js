@@ -13,7 +13,7 @@ const dbHost = process.env.DB_HOST;
 const { userModel, adminModel, courseModel, purchaseModel } = require("./db")
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://teach-hub-kohl.vercel.app',
     credentials: true
 };
 

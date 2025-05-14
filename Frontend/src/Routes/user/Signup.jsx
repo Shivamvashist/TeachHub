@@ -40,7 +40,7 @@ async function HandleSubmit(e) {
     const password = passRef.current.value
 
     try{
-        const data1 = await axios.post("http://localhost:3000/api/v1/user/signup",{
+        const data1 = await axios.post("http://teachhub-production.up.railway.app/api/v1/user/signup",{
             email:email,
             username:username,
             password:password

@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useEffect } from 'react'
 import { BrowserRouter,Routes,Route,Link,Outlet } from 'react-router-dom'
 import { Homepage } from './Routes/common/HomePage'
 import { Layout } from './Routes/common/Layout'
